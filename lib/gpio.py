@@ -4,13 +4,16 @@ import time
 
 import miscellaneous as misc
 
-
+""" constants """
+DIRECTION = "direction" # create path to direction dir for set gpio direction
+WRITE = "w" # use to set gpio out
 
 
 class GPIO:
     def __init__(self, gpio_path, pin_num):
 
         self.export_path = "/sys/class/gpio/export"
+        self.unexport_path = "/sys/class/gpio/unexport"
         self.pin_num = pin_num
 
         if os.path.exists(gpio_path):
@@ -18,22 +21,29 @@ class GPIO:
         else:
             print("[ERROR] path does not exit {}".format(gpio_path))
 
+        # need to unexport otherwise it will through error "resources are busy"
+        if os.path.exists(self.unexport_path):
+            misc.file_into_write(self.unexport_path, WRITE, self.pin_num)
+        else:
+            print("[ERROR] path does not exist {}".format(self.unexport_path))
+
     def export(self):
 
         if os.path.exists(self.export_path):
-            misc.file_write(self.export_path, "w", self.pin_num)
+            misc.file_into_write(self.export_path, WRITE, self.pin_num)
         else:
             print("[ERROR] path does not exist {}".format(self.export_path))
 
-    def set_direction(self, direction):
+    def set_direction(self, direction="out"):
 
-        dir_path = os.path.join(self.gpio_path, "direction")
-        misc.file_write(dir_path, "w", direction)
+        dir_path = os.path.join(self.gpio_path, DIRECTION)
+
+        misc.file_into_write(dir_path, WRITE, direction)
 
     def set_gpio_value(self, value):
 
         dir_path = os.path.join(self.gpio_path, "value")
-        misc.file_write(dir_path, "w", value)
+        misc.file_into_write(dir_path, WRITE, value)
 
 def main():
 
