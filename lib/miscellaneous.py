@@ -10,3 +10,12 @@ def rad_to_deg(rad):
     return rad*(180/np.pi)
 
 
+def file_write(path, mode, value):
+
+    try:
+        with open(path, mode) as fil:
+            fil.write(value)
+            return True
+
+    except Exception as error:
+        print(error)

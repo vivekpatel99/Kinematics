@@ -1,12 +1,6 @@
 # Created by viv at 08.12.18
 
-"""
-servo control
- for 50Hz signal
-  - 5% of duty cycle corresponds to 1ms pulse width
-  - 10% of duty cycle corresponds to 2ms pulse width
 
-"""
 
 import math
 import numpy as np
@@ -29,13 +23,12 @@ r2 = Z - joint_len_1  # eq3
 phi_2 = math.atan(r2 / r1)  # eq4
 r3 = np.sqrt(r1 ** 2 + r2 ** 2)  # eq5
 
-phi_1 = np.arccos((joint_len_3 ** 2 - joint_len_2 ** 2 - r3 ** 2) / (-2 * joint_len_2 * r3))  # eq6
+phi_1 = np.arccos((joint_len_3 ** 2 - joint_len_2 ** 2 - r3 ** 2) / (-2.0 * joint_len_2 * r3))  # eq6
 
 theta_2 = phi_2 - phi_1  # eq7
 
-phi_3 = np.arccos(((r3 ** 2) - (joint_len_2 ** 2) - (joint_len_3 ** 2)) / (-2 * joint_len_2 * joint_len_3)) # eq8
+phi_3 = np.arccos(((r3 ** 2) - (joint_len_2 ** 2) - (joint_len_3 ** 2)) / (-2.0 * joint_len_2 * joint_len_3)) # eq8
 theta_3 = np.pi - phi_3  # eq9
 
 print(theta_1, theta_2, theta_3)
 print(misc.rad_to_deg(theta_1), misc.rad_to_deg(theta_2), misc.rad_to_deg(theta_3))
-l
