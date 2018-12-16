@@ -1,4 +1,6 @@
+# Created by viv at 16.12.18
 # Created by viv at 10.12.18
+import os
 
 import numpy as np
 
@@ -19,13 +21,17 @@ def rad_to_deg(rad):
 # ------------------------------------------------------------------------------
 # """ FUNCTION: to open file and write something """
 # ------------------------------------------------------------------------------
-def file_into_write(path, mode, value):
+def write_into_file(path, mode, value):
 
+    if not os.path.exists(path):
+        print("[ERROR] path does not exist {}".format(path))
     try:
         with open(path, mode) as fil:
-            fil.write(value)
-            return True
+
+            fil.write(str(value))
+            # return True
 
     except Exception as error:
         print(error, path)
-        raise
+        # raise
+

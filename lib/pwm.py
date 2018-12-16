@@ -18,6 +18,7 @@ servo control
 
 """
 import math
+import time
 
 import gpio
 
@@ -35,10 +36,9 @@ servo_max = 600 # max pulse range
 # """ CLASS: for PWM set up """
 # ------------------------------------------------------------------------------
 class PWM:
-    def __init__(self, pin_path, pin_num,  duty_cycle, freq_hz):
+    def __init__(self, pin_path, pin_num, freq_hz = 50):
         self.pin_path = pin_path
         self.pin_num = pin_num
-        self.duty_cycle = float(duty_cycle)
         self.freq_hz = float(freq_hz)
 
         # initialize gpio pin
@@ -61,27 +61,38 @@ class PWM:
         print('[INFO] Final pre-scale: {0}'.format(prescale))
 
     # ------------------------------------------------------------------------------
-    # """ FUNCTION: to calculate pulse from given frequency """
-    # ------------------------------------------------------------------------------
-    def servo_pulse_calculate(self):
-        # ton = duty cycle * total time or frequency
-        # ton = self.duty_cycle
-        # toff = self.freq_hz - ton
-        #
-        # return ton, toff
-        _time = 1/self.freq_hz
-        pulse_width =(self.duty_cycle/100) * _time
-
-        return pulse_width
-
-    # ------------------------------------------------------------------------------
-    # """ FUNCTION: to set servo at zero postion """
-    # ------------------------------------------------------------------------------
-    def servo_set_0(self, pin_path):
-        pass
-
-    # ------------------------------------------------------------------------------
     # """ FUNCTION: to generate pwm pulse """
     # ------------------------------------------------------------------------------
     def set_duty_cycle(self, on_off):
         self.gpio_path.set_gpio_value(on_off)
+
+    # ------------------------------------------------------------------------------
+    # """ FUNCTION: to calculate pulse from given frequency """
+    # ------------------------------------------------------------------------------
+    def pwm_generate(self, duty_cycle):
+        """
+        ton = total time (ts) * duty cycle
+        toff = ts - ton
+        :return:
+        """
+        total_time = float(1/self.freq_hz)
+        ton = float(total_time*(duty_cycle/100))
+        toff = total_time - ton
+
+        # PWM.set_duty_cycle(1)
+        self.gpio_path.set_gpio_value(1)
+        time.sleep(ton)
+
+        # PWM.set_duty_cycle(0)
+        self.gpio_path.set_gpio_value(0)
+        time.sleep(toff)
+
+        # return ton, toff
+
+    # ------------------------------------------------------------------------------
+    # """ FUNCTION: angle to duty cycle conversion """
+    # ------------------------------------------------------------------------------
+    def angle_to_dcycle(self, servo_num):
+        pass
+
+

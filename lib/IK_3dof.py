@@ -4,7 +4,7 @@
 
 import math
 import numpy as np
-from lib import miscellaneous as misc
+from lib import _miscellaneous as misc
 
 # Desired X Y position of the end effector in cm
 X = 50.0

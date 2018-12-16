@@ -1,7 +1,7 @@
 # Created by viv at 08.12.18
 
 import numpy as np
-from lib import miscellaneous as misc
+from lib import _miscellaneous as misc
 
 # PT = [[0, 0, 0, 0],
 #       [0, 0, 0, 0],

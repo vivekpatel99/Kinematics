@@ -2,12 +2,14 @@
 """
 
 """
-
+# TODO : 1. calibrate servo \
+#          2. check  pwm_generate
 import time
 
 from lib import gpio
 from lib import pwm
 import constants as cont
+from lib import servo_calib_data as servo_calib
 
 # ------------------------------------------------------------------------------
 # """ FUNCTION: to set servo pulse """
@@ -21,47 +23,65 @@ def set_servo_pulse(channel, pulse):
     pulse *= 1000
     print(pulse_length)
     pulse /= pulse_length
-    # print(pulse)
+    print(pulse)
     pulse = round(pulse)
-    # print(pulse)
+    print(pulse)
     pulse = int(pulse)
     print (pulse)
     # pwm.set_pwm(channel, 0, pulse)
 
+
+# ------------------------------------------------------------------------------
+# """ FUNCTION: angle to duty cycle conversion """
+# ------------------------------------------------------------------------------
+def angle_to_dcycle(servo_num, angle):
+    """
+    calculation
+    (0,0)
+    (180,10)
+    - fit the line of these two points, to get duty cycle for an angle
+    - the slop of two point is
+     m = (y2-y1)/(x2-x1)
+     y-y1 = m(x-x1)
+     where y = duty cycle
+           x = angle
+    """
+
+    slop = (servo_num.end_pnt[1] - servo_num.start_pnt[1]) / (servo_num.end_pnt[0]- servo_num.start_pnt[0])
+
+    duty_cycle = (slop*(angle - servo_num.start_pnt[0])) + servo_num.start_pnt[1]
+
+    return duty_cycle
 # ------------------------------------------------------------------------------
 # """ FUNCTION: to open file and write something """
 # ------------------------------------------------------------------------------
 def main():
+    """
+    906
+    :return:
+    """
+    pwm_jf7 = pwm.PWM(cont.JF7_MIO0_906, "906")
+    pwm_jf8 = pwm.PWM(cont.JF8_MIO09_915, "915")
+    pwm_jf9 = pwm.PWM(cont.JF9_MIO14_920, "920")
+    # pwm_jf2 = pwm.PWM(cont.JF2_MIO10_916, "916")
+    # pwm_jf3 = pwm.PWM(cont.JF3_MIO11_917, "917")
+    # duty = input("duty: ")
+    # duty = 5
 
-    # gpio_LED = gpio.GPIO(cont.LD04_MIO07_913, "913")
-    # gpio_JF1 = gpio.GPIO(cont.JF1_MIO13_191, "919")
-    # gpio_LED.set_direction("out")
-    # gpio_LED.set_direction("out")
-    #
-    #
-    #
-    # gpio_913.set_gpio_value("1")
-    # time.sleep(10)
-
-    pwm_led = pwm.PWM(cont.LD04_MIO07_913, "913", 5, 50)
-    pwm_jf1 = pwm.PWM(cont.JF1_MIO13_919, "919", 5, 50)
-    # pwm_led.set_duty_cycle()
-    ton_led_pluse = pwm_led.servo_pulse_calculate()
-    ton = pwm_jf1.servo_pulse_calculate()
-
-    print(ton_led_pluse)
-    print(ton)
     while(True):
+        # angle = int(input("angle: "))
+        angle = float(input("angle: "))
+        pwm_jf7.pwm_generate(angle_to_dcycle(servo_calib.servo_1, angle))
+        # pwm_jf7.pwm_generate(angle)
+        time.sleep(0.5)
+        pwm_jf8.pwm_generate(angle_to_dcycle(servo_calib.servo_2, angle))
+        # pwm_jf8.pwm_generate(angle)
+        time.sleep(0.5)
+        pwm_jf9.pwm_generate(angle_to_dcycle(servo_calib.servo_3, angle))
+        # pwm_jf9.pwm_generate(angle)
 
-        pwm_led.set_duty_cycle('1')
-        pwm_jf1.set_duty_cycle('1')
-        time.sleep(0.0015)
 
-        pwm_led.set_duty_cycle('0')
-        pwm_jf1.set_duty_cycle('0')
-        time.sleep(0.1)
 
 
 if __name__ == '__main__':
     main()
-    # set_servo_pulse(0, 1.5)
