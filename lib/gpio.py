@@ -4,11 +4,24 @@ import time
 
 import miscellaneous as misc
 
+
+# -----------------------------------------------
 """ constants """
 DIRECTION = "direction" # create path to direction dir for set gpio direction
 WRITE = "w" # use to set gpio out
 
 
+
+
+
+
+
+
+
+
+# ------------------------------------------------------------------------------
+# """ CLASS: for GPIO set up """
+# ------------------------------------------------------------------------------
 class GPIO:
     def __init__(self, gpio_path, pin_num):
 
@@ -24,27 +37,42 @@ class GPIO:
         # need to unexport otherwise it will through error "resources are busy"
         if os.path.exists(self.unexport_path):
             misc.file_into_write(self.unexport_path, WRITE, self.pin_num)
+            print("[INFO] unexport successful {}".format(self.pin_num))
         else:
             print("[ERROR] path does not exist {}".format(self.unexport_path))
 
+    # ------------------------------------------------------------------------------
+    # """ FUNCTION: to export gpio"""
+    # ------------------------------------------------------------------------------
     def export(self):
 
         if os.path.exists(self.export_path):
             misc.file_into_write(self.export_path, WRITE, self.pin_num)
+            print("[INFO] export successful {}".format(self.pin_num))
         else:
             print("[ERROR] path does not exist {}".format(self.export_path))
 
+    # ------------------------------------------------------------------------------
+    # """ FUNCTION: to set direction of gpio input or output"""
+    # ------------------------------------------------------------------------------
     def set_direction(self, direction="out"):
 
         dir_path = os.path.join(self.gpio_path, DIRECTION)
 
         misc.file_into_write(dir_path, WRITE, direction)
+        print("[INFO] direction set {} {}".format(direction, self.pin_num))
 
+    # ------------------------------------------------------------------------------
+    # """ FUNCTION: to set gpio 1 or 0"""
+    # ------------------------------------------------------------------------------
     def set_gpio_value(self, value):
 
         dir_path = os.path.join(self.gpio_path, "value")
         misc.file_into_write(dir_path, WRITE, value)
 
+# ----------------------------------------------------------------------------------------------------------------------
+# """ FUNCTION: main """
+# ----------------------------------------------------------------------------------------------------------------------
 def main():
 
     gpio_913 = "/sys/class/gpio/gpio913"

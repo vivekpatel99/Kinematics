@@ -1,7 +1,7 @@
 # Created by viv at 15.12.18
 
 
-
+# -----------------------------------------------
 """ paths of all gpios """
 # from zybo_zybo_rm-pdf (page 25)
 

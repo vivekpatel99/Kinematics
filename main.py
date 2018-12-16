@@ -2,14 +2,16 @@
 """
 
 """
-import math
+
 import time
 
 from lib import gpio
 from lib import pwm
 import constants as cont
 
-
+# ------------------------------------------------------------------------------
+# """ FUNCTION: to set servo pulse """
+# ------------------------------------------------------------------------------
 def set_servo_pulse(channel, pulse):
     pulse_length = 1000000
     pulse_length /= 50
@@ -26,6 +28,9 @@ def set_servo_pulse(channel, pulse):
     print (pulse)
     # pwm.set_pwm(channel, 0, pulse)
 
+# ------------------------------------------------------------------------------
+# """ FUNCTION: to open file and write something """
+# ------------------------------------------------------------------------------
 def main():
 
     # gpio_LED = gpio.GPIO(cont.LD04_MIO07_913, "913")
