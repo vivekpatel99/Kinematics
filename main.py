@@ -11,6 +11,7 @@ from lib import pwm
 import constants as cont
 from lib import servo_calib_data as servo_calib
 
+
 # ------------------------------------------------------------------------------
 # """ FUNCTION: to set servo pulse """
 # ------------------------------------------------------------------------------
@@ -27,7 +28,7 @@ def set_servo_pulse(channel, pulse):
     pulse = round(pulse)
     print(pulse)
     pulse = int(pulse)
-    print (pulse)
+    print(pulse)
     # pwm.set_pwm(channel, 0, pulse)
 
 
@@ -46,14 +47,51 @@ def angle_to_dcycle(servo_num, angle):
      where y = duty cycle
            x = angle
     """
+    if angle >= 180:
+        angle = 180
 
-    slop = (servo_num.end_pnt[1] - servo_num.start_pnt[1]) / (servo_num.end_pnt[0]- servo_num.start_pnt[0])
+    if angle <= 0:
+        angle = 0
 
-    duty_cycle = (slop*(angle - servo_num.start_pnt[0])) + servo_num.start_pnt[1]
+    slop = (servo_num.end_pnt[1] - servo_num.start_pnt[1]) / (servo_num.end_pnt[0] - servo_num.start_pnt[0])
+
+    duty_cycle = (slop * (angle - servo_num.start_pnt[0])) + servo_num.start_pnt[1]
 
     return duty_cycle
+
+
 # ------------------------------------------------------------------------------
-# """ FUNCTION: to open file and write something """
+# """ FUNCTION: servo calibration """
+# ------------------------------------------------------------------------------
+def servo_calibration():
+    """
+    906
+    :return:
+    """
+    pwm_jf7 = pwm.PWM(cont.JF7_MIO0_906, "906")
+    pwm_jf8 = pwm.PWM(cont.JF8_MIO09_915, "915")
+    pwm_jf9 = pwm.PWM(cont.JF9_MIO14_920, "920")
+    # pwm_jf2 = pwm.PWM(cont.JF2_MIO10_916, "916")
+    # pwm_jf3 = pwm.PWM(cont.JF3_MIO11_917, "917")
+    # duty = input("duty: ")
+    # duty = 5
+
+    while (True):
+        # angle = int(input("angle: "))
+        angle = float(input("PWM pulse duty cycle  0-10: "))
+
+        # pwm_jf7.pwm_generate(angle)
+        # time.sleep(0.5)
+
+        # pwm_jf8.pwm_generate(angle)
+        # time.sleep(0.5)
+
+        pwm_jf9.pwm_generate(angle)
+
+
+
+# ------------------------------------------------------------------------------
+# """ FUNCTION: MAIN """
 # ------------------------------------------------------------------------------
 def main():
     """
@@ -68,20 +106,19 @@ def main():
     # duty = input("duty: ")
     # duty = 5
 
-    while(True):
-        # angle = int(input("angle: "))
-        angle = float(input("angle: "))
+    while (True):
+        angle = float(input("angle 0 - 180 : "))
         pwm_jf7.pwm_generate(angle_to_dcycle(servo_calib.servo_1, angle))
-        # pwm_jf7.pwm_generate(angle)
         time.sleep(0.5)
+
         pwm_jf8.pwm_generate(angle_to_dcycle(servo_calib.servo_2, angle))
-        # pwm_jf8.pwm_generate(angle)
         time.sleep(0.5)
+
         pwm_jf9.pwm_generate(angle_to_dcycle(servo_calib.servo_3, angle))
-        # pwm_jf9.pwm_generate(angle)
 
 
 
 
 if __name__ == '__main__':
+    # servo_calibration()
     main()
