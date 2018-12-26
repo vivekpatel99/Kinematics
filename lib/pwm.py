@@ -18,8 +18,12 @@ servo control
 
 """
 import math
+import sys
+import os
 import time
 
+fil_dir = os.path.dirname(__file__)
+sys.path.append(fil_dir)
 import gpio
 
 # -----------------------------------------------

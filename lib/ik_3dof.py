@@ -35,8 +35,8 @@ def ik_3dof(X, Y, Z=0.0):
     phi_3 = np.arccos(((r3 ** 2) - (joint_len_2 ** 2) - (joint_len_3 ** 2)) / (-2.0 * joint_len_2 * joint_len_3)) # eq8
     theta_3 = np.pi - phi_3  # eq9
 
-    print(theta_1, theta_2, theta_3)
-    print(misc.rad_to_deg(theta_1), misc.rad_to_deg(theta_2), misc.rad_to_deg(theta_3))
+    # print(theta_1, theta_2, theta_3)
+    # print(misc.rad_to_deg(theta_1), misc.rad_to_deg(theta_2), misc.rad_to_deg(theta_3))
     return misc.rad_to_deg(theta_1), misc.rad_to_deg(theta_2), misc.rad_to_deg(theta_3)
 
 
