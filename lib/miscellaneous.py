@@ -10,13 +10,13 @@ import numpy as np
 # """ FUNCTION: to convert degree to radian """
 # ------------------------------------------------------------------------------
 def deg_to_rad(deg):
-    return deg*(np.pi/180)
+    return float(deg)*(np.pi/180)
     # return (deg/180)*np.pi
 # ------------------------------------------------------------------------------
 # """ FUNCTION: to convert radian to degree """
 # ------------------------------------------------------------------------------
 def rad_to_deg(rad):
-    return rad*(180/np.pi)
+    return float(rad)*(180/np.pi)
 
 # ------------------------------------------------------------------------------
 # """ FUNCTION: to open file and write something """

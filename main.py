@@ -63,39 +63,49 @@ def main():
 
     :return:
     """
-    theta_1, theta_2, theta_3 = ik.ik_3dof(50, 50, 50)
-    # print(theta_1)
-    # print(theta_2)
-    # print(theta_3)
-    R0_3 = fk.fk()
+    theta_1, theta_2, theta_3 = ik.ik_3dof(20, 20, 20)
+    print(misc.rad_to_deg(theta_1))
+    print(misc.rad_to_deg(theta_2))
+    print(misc.rad_to_deg(theta_3))
+    R0_3 = fk.fkine_3dof()
+    # print(np.matrix(R0_3))
     R0_3 = [
                 R0_3[0][:3],
                 R0_3[1][:3],
                 R0_3[2][:3]
             ]
-
-    invR0_3 = np.linalg.inv(R0_3)
-    R0_6 = [
-                [0.0, 0.0, 1.0],
+    # print(np.matrix(R0_3))
+    # R0_5 = [
+    #             [0.0, 0.0, -1.0],
+    #             [0.0, -1.0, 0.0],
+    #             [1.0, 0.0, 0.0]
+    #         ]
+    R0_5 = [
+                [-1.0, 0.0, 0.0],
                 [0.0, -1.0, 0.0],
-                [1.0, 0.0, 0.0]
+                [0.0, 0.0, 1.0]
             ]
+    invR0_3 = np.linalg.inv(R0_3)
 
-    R3_6 = np.dot(invR0_3, R0_6)
-    print(np.matrix(R3_6))
+    R3_5 = np.dot(invR0_3, R0_5)
+    # print(np.matrix(R3_5))
 
-    theta_5 = np.arccos(R3_6[2][1])
-    # theta_4 = np.arcsin(R3_6[1][1])/np.cos(theta_5)
-    theta_4 = np.arcsin(R3_6[1][2])
+    theta_5 = np.arccos(R3_5[2][1])
+    # theta_4 = np.arcsin(R3_5[1][0]/-np.sin(theta_5))
+    theta_4 = np.arcsin(R3_5[1][2])
     print(theta_4)
-    print(theta_5)
 
     R3_6_check = [
-                    [-np.sin(theta_4) * np.cos(theta_5), np.sin(theta_4) * np.sin(theta_5), np.cos(theta_4)],
-                    [np.cos(theta_4) * np.cos(theta_5), np.cos(theta_4) * (-np.sin(theta_5)),  np.sin(theta_4)],
+                    [-np.sin(theta_4) * np.cos(theta_5), np.sin(theta_4) * np.sin(theta_5),     np.cos(theta_4)],
+                    [ np.cos(theta_4) * np.cos(theta_5), np.cos(theta_4) * (-np.sin(theta_5)),  np.sin(theta_4)],
                     [          np.sin(theta_5),                  np.cos(theta_5),                 0       ]
                   ]
+    # print()
     # print(np.matrix(R3_6_check))
+    print(misc.rad_to_deg(theta_4))
+    print(misc.rad_to_deg(theta_5))
+
+    fk.test_fkine(theta_1, theta_2, theta_3, theta_4, theta_5)
 if __name__ == '__main__':
     # servo_calibration()
     main()
