@@ -21,9 +21,9 @@ LD04_MIO07_913 = "/sys/class/gpio/gpio913" # LED
 # -----------------------------------------------
 """ DH parameters for robotic arm """
 
-THETA_1 = misc.deg_to_rad(45)
-THETA_2 = misc.deg_to_rad(-93.23937156927654)
-THETA_3 = misc.deg_to_rad(162.8034961549219)
+THETA_1 = misc.deg_to_rad(0)
+THETA_2 = misc.deg_to_rad(0)
+THETA_3 = misc.deg_to_rad(0)
 THETA_4 = misc.deg_to_rad(0)
 THETA_5 = misc.deg_to_rad(0)
 

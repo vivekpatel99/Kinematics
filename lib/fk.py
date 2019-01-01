@@ -95,7 +95,7 @@ def fkine_3dof():
 
     fk_m = Fkine(const.PT_3dof)
     Hn = fk_m.fk()
-    # print(np.matrix(Hn))
+    print(np.matrix(Hn))
     return Hn
 
 
@@ -240,7 +240,7 @@ def main():
 
 if __name__ == "__main__":
 
-    main()
-    print()
-    # fkine_3dof()
-    test_fkine()
+    # main()
+    # print()
+    fkine_3dof()
+
