@@ -2,7 +2,7 @@
 """
 
 """
-
+import math
 import time
 import sys
 import numpy as np
@@ -12,6 +12,8 @@ from lib import servo_calib_data as servo_calib
 from lib import miscellaneous as misc
 from lib import ik_3dof as ik
 from lib import fk
+
+from lib.jacobian import jacobian
 
 # ------------------------------------------------------------------------------
 # """ FUNCTION: MAIN """
@@ -108,4 +110,14 @@ def main():
     # fk.test_fkine(theta_1, theta_2, theta_3, theta_4, theta_5)
 if __name__ == '__main__':
     # servo_calibration()
-    main()
+    # main()
+
+    jacobian.main()
+
+    print()
+    print('jacobian caculation test')
+
+    jacobian.jacob_test()
+
+    fk = fk.Fkine(cont.PT_2dof)
+    print(fk.fk())

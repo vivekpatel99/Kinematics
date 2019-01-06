@@ -1,5 +1,7 @@
 # Created by viv at 15.12.18
 from lib import miscellaneous as misc
+import math
+
 
 # -----------------------------------------------
 """ paths of all gpios """
@@ -21,11 +23,12 @@ LD04_MIO07_913 = "/sys/class/gpio/gpio913" # LED
 # -----------------------------------------------
 """ DH parameters for robotic arm """
 
-THETA_1 = misc.deg_to_rad(0)
-THETA_2 = misc.deg_to_rad(0)
-THETA_3 = misc.deg_to_rad(0)
-THETA_4 = misc.deg_to_rad(0)
-THETA_5 = misc.deg_to_rad(0)
+
+THETA_1 = 0
+THETA_2 = 0
+THETA_3 = 0
+THETA_4 = 0
+THETA_5 = 0
 
 L_1 = 33.  # mm 3.3cm
 L_2 = 105.  # mm 10.5cm
@@ -35,20 +38,24 @@ L_5 = 65.  # mm 6.5cm
 
 
 PT_5dof = [
-            [THETA_1, misc.deg_to_rad(90.0), 0, L_1],
-            [THETA_2, 0, L_2, 0],
-            [THETA_3, 0, L_3, 0],
-            [THETA_4 + misc.deg_to_rad(90.0), misc.deg_to_rad(90.0), 0, 0],
-            [THETA_5, 0, 0, L_4 + L_5]
+            [math.radians(THETA_1), math.radians(90.0), 0, L_1],
+            [math.radians(THETA_2), 0, L_2, 0],
+            [math.radians(THETA_3), 0, L_3, 0],
+            [math.radians(THETA_4) + math.radians(90.0), math.radians(90.0), 0, 0],
+            [math.radians(THETA_5), 0, 0, L_4 + L_5]
       ]
 
 
 PT_3dof = [
-            [THETA_1, misc.deg_to_rad(90.0), 0, L_1],
-            [THETA_2, 0, L_2, 0],
-            [THETA_3, 0, L_3, 0],
+            [math.radians(THETA_1), math.radians(90.0), 0, L_1],
+            [math.radians(THETA_2), 0, L_2, 0],
+            [math.radians(THETA_3), 0, L_3, 0],
       ]
 
+PT_2dof = [
+            [math.radians(THETA_1), math.radians(90.0), 0, L_1],
+            [math.radians(THETA_2), 0, L_2, 0],
+      ]
 
 
 
