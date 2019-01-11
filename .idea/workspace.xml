@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61f2109e-4802-46f1-b7b2-2a53e6e23eed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/viv.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/_jacobian.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jacobian/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jacobian/jacobian.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/simulation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/simulation/simulation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fk.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fk.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jacobian.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jacobian/jecobian_ik.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jacobian/link.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jacobian/robot_arm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jacobian/robot_arm_3dof.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jacobian/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/_jacobian.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fk.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jacobian/jacobian.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jacobian/jacobian.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,10 +25,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/_jacobian.py">
+        <entry file="file://$PROJECT_DIR$/lib/fk.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1065">
-              <caret line="221" selection-start-line="221" selection-end-line="221" />
+            <state relative-caret-position="897">
+              <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
               <folding>
                 <element signature="e#30#48#0" expanded="true" />
               </folding>
@@ -33,24 +37,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/fk.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="70" column="58" lean-forward="true" selection-start-line="69" selection-end-line="70" selection-end-column="58" />
-              <folding>
-                <element signature="e#30#48#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/jacobian/jacobian.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="114" column="8" lean-forward="true" selection-start-line="114" selection-start-column="8" selection-end-line="114" selection-end-column="8" />
+            <state relative-caret-position="463">
+              <caret line="192" lean-forward="true" selection-start-line="192" selection-end-line="192" />
               <folding>
-                <element signature="e#29#39#0" expanded="true" />
+                <element signature="e#1293#2546#0" />
               </folding>
             </state>
           </provider>
@@ -59,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="122" column="17" selection-start-line="122" selection-start-column="17" selection-end-line="122" selection-end-column="17" />
+            <state relative-caret-position="670">
+              <caret line="116" column="19" lean-forward="true" selection-start-line="116" selection-start-column="19" selection-end-line="116" selection-end-column="19" />
               <folding>
                 <element signature="e#38#49#0" expanded="true" />
                 <element signature="e#515#1275#0" />
@@ -73,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="530">
-              <caret line="56" column="37" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="37" />
+            <state relative-caret-position="667">
+              <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
               <folding>
                 <element signature="e#29#66#0" expanded="true" />
               </folding>
@@ -110,6 +102,9 @@
       <find>THETA_1</find>
       <find>THETA_5</find>
       <find>L_1</find>
+      <find>angle_1</find>
+      <find>angle_2</find>
+      <find>radians</find>
     </findStrings>
     <replaceStrings>
       <replace>np</replace>
@@ -126,6 +121,13 @@
       <replace>const.THETA_1</replace>
       <replace>const.THETA_5</replace>
       <replace>const.L_5</replace>
+      <replace>sth_1</replace>
+      <replace>sth_2</replace>
+      <replace>cth_2</replace>
+      <replace>cth_1</replace>
+      <replace>theta_1</replace>
+      <replace>theta_2</replace>
+      <replace>degrees</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -139,7 +141,6 @@
         <option value="$PROJECT_DIR$/lib/PWM.py" />
         <option value="$PROJECT_DIR$/lib/constants.py" />
         <option value="$PROJECT_DIR$/__init__.py" />
-        <option value="$PROJECT_DIR$/lib/__init__.py" />
         <option value="$PROJECT_DIR$/lib/gpio.py" />
         <option value="$PROJECT_DIR$/lib/IK_3dof.py" />
         <option value="$PROJECT_DIR$/lib/servo_calib_data.py" />
@@ -149,18 +150,21 @@
         <option value="$PROJECT_DIR$/lib/ik_3dof.py" />
         <option value="$PROJECT_DIR$/../../robo_toolbx_python/robotics-toolbox-python/test.py" />
         <option value="$PROJECT_DIR$/lib/jacobian.py" />
-        <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/lib/jacobian/jacobian.py" />
-        <option value="$PROJECT_DIR$/lib/fk.py" />
+        <option value="$PROJECT_DIR$/lib/fk .py" />
+        <option value="$PROJECT_DIR$/lib/__init__.py" />
         <option value="$PROJECT_DIR$/constants.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/lib/simulation/simulation.py" />
+        <option value="$PROJECT_DIR$/lib/fk.py" />
+        <option value="$PROJECT_DIR$/lib/jacobian/jacobian.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="49" />
     <option name="y" value="-4" />
-    <option name="width" value="1871" />
-    <option name="height" value="1084" />
+    <option name="width" value="1867" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -187,6 +191,12 @@
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="jacobian" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Kinematics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kinematics" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="simulation" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -194,8 +204,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/jacobian/jacobian.py" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/simulation/simulation.py" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -209,7 +219,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.fk">
+  <component name="RunManager" selected="Python.main">
     <configuration name="IK_3dof" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Kinematics" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -336,10 +346,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="simulation" type="PythonConfigurationType" factoryName="Python">
+      <module name="Kinematics" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/.virtualenvs/cv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lib/simulation" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lib/simulation/simulation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Python.fk" />
       <item itemvalue="Python.IK_3dof" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.fk" />
+      <item itemvalue="Python.simulation" />
       <item itemvalue="Python.jecobian" />
       <item itemvalue="Python.gpio" />
     </list>
@@ -372,26 +404,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="49" y="-4" width="1871" height="1084" extended-state="6" />
+    <frame x="48" y="-11" width="1873" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.091506846" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09972603" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Debug" order="2" weight="0.031347964" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.031746034" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="5" weight="0.04911181" />
+      <window_info anchor="bottom" id="TODO" order="5" sideWeight="0.49972603" visible="true" weight="0.031746034" />
       <window_info anchor="bottom" id="Version Control" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="9" visible="true" weight="0.20794149" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50027394" side_tool="true" weight="0.32592592" />
+      <window_info anchor="bottom" id="Python Console" order="9" weight="0.031746034" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Run" order="3" weight="0.41479453" />
+      <window_info active="true" anchor="right" id="Run" order="3" visible="true" weight="0.33753425" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10227273" />
@@ -428,9 +460,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/_miscellaneous.py" />
     <entry file="file://$PROJECT_DIR$/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/servo_calibration.py">
@@ -524,16 +553,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/_jacobian.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="221" selection-start-line="221" selection-end-line="221" />
-          <folding>
-            <element signature="e#30#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.virtualenvs/cv/lib/python3.5/site-packages/numpy/core/numeric.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -541,35 +560,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="122" column="17" selection-start-line="122" selection-start-column="17" selection-end-line="122" selection-end-column="17" />
-          <folding>
-            <element signature="e#38#49#0" expanded="true" />
-            <element signature="e#515#1275#0" />
-            <element signature="e#1480#3381#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.virtualenvs/cv/lib/python3.5/site-packages/numpy/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/jacobian/jacobian.py">
+    <entry file="file://$PROJECT_DIR$/lib/_jacobian.py" />
+    <entry file="file://$PROJECT_DIR$/jacobian/fk .py" />
+    <entry file="file://$PROJECT_DIR$/jacobian/jacobian .py" />
+    <entry file="file://$PROJECT_DIR$/lib/jacobian .py" />
+    <entry file="file://$PROJECT_DIR$/lib/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="114" column="8" lean-forward="true" selection-start-line="114" selection-start-column="8" selection-end-line="114" selection-end-column="8" />
+        <state relative-caret-position="23">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/simulation/simulation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
           <folding>
-            <element signature="e#29#39#0" expanded="true" />
+            <element signature="e#30#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="56" column="37" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="37" />
+        <state relative-caret-position="667">
+          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
           <folding>
             <element signature="e#29#66#0" expanded="true" />
           </folding>
@@ -578,10 +596,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/fk.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="70" column="58" lean-forward="true" selection-start-line="69" selection-end-line="70" selection-end-column="58" />
+        <state relative-caret-position="897">
+          <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
           <folding>
             <element signature="e#30#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="670">
+          <caret line="116" column="19" lean-forward="true" selection-start-line="116" selection-start-column="19" selection-end-line="116" selection-end-column="19" />
+          <folding>
+            <element signature="e#38#49#0" expanded="true" />
+            <element signature="e#515#1275#0" />
+            <element signature="e#1480#3381#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/jacobian/jacobian.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="192" lean-forward="true" selection-start-line="192" selection-end-line="192" />
+          <folding>
+            <element signature="e#1293#2546#0" />
           </folding>
         </state>
       </provider>

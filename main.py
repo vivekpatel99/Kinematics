@@ -111,13 +111,9 @@ def main():
 if __name__ == '__main__':
     # servo_calibration()
     # main()
-
+    # fk = fk.Fkine(cont.PT_5dof)
+    # print(fk.homog_trans_matrix(0))
+    # print()
     jacobian.main()
 
-    print()
-    print('jacobian caculation test')
-
-    jacobian.jacob_test()
-
-    fk = fk.Fkine(cont.PT_2dof)
-    print(fk.fk())
+    # jacobian.jacob_test()

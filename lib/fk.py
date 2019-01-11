@@ -1,7 +1,6 @@
 # Created by viv at 08.12.18
 
 import numpy as np
-import miscellaneous as misc
 import constants as const
 
 
@@ -19,9 +18,7 @@ class Fkine:
         if not np.shape(PT)[1] == 4:
             print("[ERROR] enter proper dh parameter {}".format(PT))
 
-
         self.PT = np.array(PT)
-
 
     # ------------------------------------------------------------------------------
     # """ FUNCTION: to calculate homogeneous matrix """
@@ -48,14 +45,14 @@ class Fkine:
         sin_alpha_n = np.sin(self.PT[row_num][1])
 
         r_n = self.PT[row_num][2]
-        d_n  = self.PT[row_num][3]
+        d_n = self.PT[row_num][3]
 
         homog_trans_matrix = [
-                        [cos_theta_n, -sin_theta_n*cos_alpha_n ,  sin_theta_n * sin_alpha_n, r_n * cos_theta_n],
-                        [sin_theta_n, cos_theta_n * cos_alpha_n, -cos_theta_n * sin_alpha_n, r_n * sin_theta_n],
-                        [    0      ,        sin_alpha_n       ,        cos_alpha_n        ,      d_n         ],
-                        [0, 0, 0, 1],
-                    ]
+            [cos_theta_n, -sin_theta_n * cos_alpha_n, sin_theta_n * sin_alpha_n, r_n * cos_theta_n],
+            [sin_theta_n, cos_theta_n * cos_alpha_n, -cos_theta_n * sin_alpha_n, r_n * sin_theta_n],
+            [0, sin_alpha_n, cos_alpha_n, d_n],
+            [0, 0, 0, 1],
+        ]
         return np.matrix(homog_trans_matrix)
 
     # ------------------------------------------------------------------------------
@@ -77,7 +74,7 @@ class Fkine:
 
             else:
                 Hn = np.dot(Hn, H)
-                # print(np.matrix(Hn))
+
         return Hn
 
 
@@ -88,12 +85,13 @@ def rotation_mat(theta):
     """ function will generate rotation matrix by implementing
     theta value in the rotation matrix """
     rotation_matrix = [
-                        [np.cos(theta), -np.sin(theta), 0],
-                        [np.sin(theta),  np.cos(theta), 0],
-                        [     0,             0,         1]
-                      ]
+        [np.cos(theta), -np.sin(theta), 0],
+        [np.sin(theta), np.cos(theta), 0],
+        [0, 0, 1]
+    ]
 
     return rotation_matrix
+
 
 # ------------------------------------------------------------------------------
 # """ FUNCTION: to Calculate forward kinematics """
@@ -113,47 +111,49 @@ def fkine_3dof():
 # """ FUNCTION: to Test forward kinematics """
 # ------------------------------------------------------------------------------
 def test_3dof_fk():
-
     R0_1 = [
-                [np.cos(const.THETA_1), 0., np.sin(const.THETA_1)],
-                [np.sin(const.THETA_1),0., -np.cos(const.THETA_1)],
-                [0.,1.,0.]
+        [np.cos(const.THETA_1), 0., np.sin(const.THETA_1)],
+        [np.sin(const.THETA_1), 0., -np.cos(const.THETA_1)],
+        [0., 1., 0.]
     ]
     R1_2 = [
-                [np.cos(const.THETA_2), -np.sin(const.THETA_2), 0.],
-                [np.sin(const.THETA_2),np.cos(const.THETA_2), 0.],
-                [0.,0.,1.]
+        [np.cos(const.THETA_2), -np.sin(const.THETA_2), 0.],
+        [np.sin(const.THETA_2), np.cos(const.THETA_2), 0.],
+        [0., 0., 1.]
     ]
     R2_3 = [
-                [np.cos(const.THETA_3), -np.sin(const.THETA_3), 0.],
-                [np.sin(const.THETA_3),np.cos(const.THETA_3), 0.],
-                [0.,0.,1.]
+        [np.cos(const.THETA_3), -np.sin(const.THETA_3), 0.],
+        [np.sin(const.THETA_3), np.cos(const.THETA_3), 0.],
+        [0., 0., 1.]
     ]
 
-    R0_2 = np.dot(R0_1,R1_2)
+    R0_2 = np.dot(R0_1, R1_2)
     R0_3 = np.dot(R0_2, R2_3)
 
     print(np.matrix(R0_3))
     # print(np.matrix(R0_2))
+
+
 # ------------------------------------------------------------------------------
 # """ FUNCTION: to Test forward kinematics """
 # ------------------------------------------------------------------------------
 
-def test_fkine(theta_1 = const.THETA_1, theta_2 = const.THETA_2, theta_3 = const.THETA_3, theta_4 = const.THETA_4, theta_5 = const.THETA_5):
+def test_fkine(theta_1=const.THETA_1, theta_2=const.THETA_2, theta_3=const.THETA_3, theta_4=const.THETA_4,
+               theta_5=const.THETA_5):
     """ manual calculation of forward kinematics to test"""
 
     """ Rotation matrix """
 
-    R0_1=[
-              [1., 0., 0.],
-              [0., 0.,-1.],
-              [0., 1., 0.]
-          ]
-    # R1_2=[
-    #           [1., 0., 0.],
-    #           [0., 1., 0.],
-    #           [0., 0., 1.]
-    #       ]
+    R0_1 = [
+        [1., 0., 0.],
+        [0., 0., -1.],
+        [0., 1., 0.]
+    ]
+    R1_2 = [
+        [1., 0., 0.],
+        [0., 1., 0.],
+        [0., 0., 1.]
+    ]
     # R2_3=[
     #           [1., 0., 0.],
     #           [0., 1., 0.],
@@ -172,15 +172,15 @@ def test_fkine(theta_1 = const.THETA_1, theta_2 = const.THETA_2, theta_3 = const
 
     """ displacement vectors """
     d0_1 = [
-                [0.],
-                [0.],
-                [const.L_1]
+        [0.],
+        [0.],
+        [const.L_1]
     ]
-    # d1_2 = [
-    #             [const.L_2*np.cos(theta_2)],
-    #             [const.L_2*np.sin(theta_2)],
-    #             [0]
-    # ]
+    d1_2 = [
+        [const.L_2 * np.cos(theta_2)],
+        [const.L_2 * np.sin(theta_2)],
+        [0]
+    ]
     # d2_3 = [
     #             [const.L_3*np.cos(theta_3)],
     #             [const.L_3*np.sin(theta_3)],
@@ -197,9 +197,9 @@ def test_fkine(theta_1 = const.THETA_1, theta_2 = const.THETA_2, theta_3 = const
     #             [const.L_5]
     # ]
 
-    R0_1= np.dot(rotation_mat(theta_1), R0_1)
+    R0_1 = np.dot(rotation_mat(theta_1), R0_1)
 
-    # R1_2= np.dot(rotation_mat(theta_2), R1_2)
+    R1_2 = np.dot(rotation_mat(theta_2), R1_2)
     #
     # R2_3= np.dot(rotation_mat(theta_3), R2_3)
     #
@@ -212,9 +212,9 @@ def test_fkine(theta_1 = const.THETA_1, theta_2 = const.THETA_2, theta_3 = const
     # R0_4 = np.dot(R0_3,R3_4)
     # R0_5 = np.dot(R0_4,R4_5)
 
-    all_mat =[
+    all_mat = [
         [R0_1, d0_1],
-        # [R1_2, d1_2],
+        [R1_2, d1_2],
         # [R2_3, d2_3],
         # [R3_4, d3_4],
         # [R4_5, d4_5]
@@ -223,8 +223,8 @@ def test_fkine(theta_1 = const.THETA_1, theta_2 = const.THETA_2, theta_3 = const
     Hn = []
     for i in range(len(all_mat)):
 
-        H = np.concatenate((all_mat[i][0], all_mat[i][1]),1)
-        H = np.concatenate((H, [[0.,0.,0.,1.]]),0)
+        H = np.concatenate((all_mat[i][0], all_mat[i][1]), 1)
+        H = np.concatenate((H, [[0., 0., 0., 1.]]), 0)
 
         if i == 0:
             Hn = H
@@ -247,10 +247,11 @@ def main():
     print(Hn)
     test_fkine()
 
+
 if __name__ == "__main__":
-    test_fkine()
+    # test_fkine()
     # print()
 
-    fk_m = Fkine(const.PT_2dof)
+    fk_m = Fkine(const.PT_5dof)
     Hn = fk_m.fk()
     print(np.matrix(Hn))
