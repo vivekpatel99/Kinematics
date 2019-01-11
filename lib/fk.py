@@ -21,9 +21,9 @@ def main():
     theta_2 = 0.0
     theta_3 = 90.0
 
-    a1 = 33 # mm 3.3cm
-    a2 = 105 # mm 10.5cm
-    a3 = 98 # mm 9.8cm
+    a1 = 33. # mm 3.3cm
+    a2 = 105. # mm 10.5cm
+    a3 = 98. # mm 9.8cm
 
     # PT = [[misc.deg_to_rad(90.0), misc.deg_to_rad(90.0), 0, a1+d1],
     #       [misc.deg_to_rad(90.0), misc.deg_to_rad(-90.0), 0, a2+d2],
