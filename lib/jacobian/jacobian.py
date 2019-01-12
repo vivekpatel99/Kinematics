@@ -154,6 +154,7 @@ def jacob_test():
 # """ FUNCTION: MAIN """
 # ------------------------------------------------------------------------------
 def main():
+
         # 1 while angle is in between 0 and 180
         # 2 calculate Jacobian
         # 3 calculate inverse of Jacobian
@@ -161,69 +162,71 @@ def main():
         # 5 calculate increment
         # 6 use the increment to set an angle of servo after converting it into degrees
 
-        THETA_1 = 0.1
-        THETA_2 = 0.1
-        THETA_3 = 0.1
-        THETA_4 = 0.1
-        THETA_5 = 0.1
+    THETA_1 = 0.1
+    THETA_2 = 90.
+    THETA_3 = 0.1
+    THETA_4 = 0.1
+    THETA_5 = 0.1
 
-        L_1 = 33.  # mm 3.3cm
-        L_2 = 105.  # mm 10.5cm
-        L_3 = 98.  # mm 9.8cm
-        L_4 = 27.  # mm 2.7cm
-        L_5 = 65.  # mm 6.5cm
+    L_1 = 33.  # mm 3.3cm
+    L_2 = 105.  # mm 10.5cm
+    L_3 = 98.  # mm 9.8cm
+    L_4 = 27.  # mm 2.7cm
+    L_5 = 65.  # mm 6.5cm
 
-        PT = [
-            [math.radians(THETA_1), math.radians(90.0), 0, L_1],
-            [math.radians(THETA_2), 0, L_2, 0],
-            [math.radians(THETA_3), 0, L_3, 0],
-            [math.radians(THETA_4) + math.radians(90.0), math.radians(90.0), 0, 0],
-            [math.radians(THETA_5), 0, 0, L_4 + L_5]
-        ]
+    PT = [
+        [math.radians(THETA_1), math.radians(90.0), 0, L_1],
+        [math.radians(THETA_2), 0, L_2, 0],
+        [math.radians(THETA_3), 0, L_3, 0],
+        [math.radians(THETA_4) + math.radians(90.0), math.radians(90.0), 0, 0],
+        [math.radians(THETA_5), 0, 0, L_4 + L_5]
+    ]
 
-        x_dst = 10.
-        y_dst = 10.
-        z_dst = 1.
+    x_dst = 1.
+    y_dst = 1.
+    z_dst = 1.
+    i = 0
+    while 180. >= math.degrees(PT[0][0]) >= 0. \
+            and 180. >= math.degrees(PT[1][0]) >= 0. \
+            and 180. >= math.degrees(PT[2][0]) >= 0. \
+            and 180. >= math.degrees(PT[3][0]) >= 0. \
+            and 180. >= math.degrees(PT[4][0]) >= 0.:
 
-        while 180. >= math.degrees(PT[0][0]) >= 0. \
-                and 180. >= math.degrees(PT[1][0]) >= 0. \
-                and 180. >= math.degrees(PT[2][0]) >= 0. \
-                and 180. >= math.degrees(PT[3][0]) >= 0. \
-                and 180. >= math.degrees(PT[4][0]) >= 0.:
+        fk_5d = fk.Fkine(PT)
+        jacobian = get_jacobian(fk_5d, PT)
 
-            fk_5d = fk.Fkine(PT)
-            jacobian = get_jacobian(fk_5d, PT)
+        jacobian_inv = np.linalg.pinv(jacobian)
+        # print(jacobian_inv)
+        # print()
+        for row in range(np.shape(jacobian_inv)[1]):
+            for column in range(np.shape(jacobian_inv)[0]):
+                if jacobian_inv[column][row] < 0.00009:
+                    jacobian_inv[column][row] = 1.
+                # print(jacobian_inv[column][row])
+                # print()
 
-            jacobian_inv = np.linalg.pinv(jacobian)
-            print(jacobian_inv)
-            print()
-            for row in range(np.shape(jacobian_inv)[1]):
-                for column in range(np.shape(jacobian_inv)[0]):
+        current_cord = fk_5d.fk()[:, 3][:-1]
 
-                    print(jacobian_inv[row][column])
-                    print()
-            break
-            current_cord = fk_5d.fk()[:, 3][:-1]
+        theta_dots = jacobian_inv.dot([
+            [x_dst],
+            [y_dst],
+            [z_dst],
+        ])
+        # print(theta_dots)
+        PT[0][0] += theta_dots.item(0) / 100
+        PT[1][0] += theta_dots.item(1) / 100
+        PT[2][0] += theta_dots.item(2) / 100
+        PT[3][0] += theta_dots.item(3) / 100
+        PT[4][0] += theta_dots.item(4) / 100
 
-            theta_dots = jacobian_inv.dot([
-                [x_dst],
-                [y_dst],
-                [z_dst],
-            ])
-            print(theta_dots)
-            PT[0][0] += theta_dots.item(0) / 100
-            PT[1][0] += theta_dots.item(1) / 100
-            PT[2][0] += theta_dots.item(2) / 100
-            PT[3][0] += theta_dots.item(3) / 100
-            PT[4][0] += theta_dots.item(4) / 100
+        i += 1
+        print(i)
 
-        print()
-        print("theta_1 {}".format(math.degrees(PT[0][0])))
-        print("theta_2 {}".format(math.degrees(PT[1][0])))
-        print("theta_3 {}".format(math.degrees(PT[2][0])))
-        print("theta_4 {}".format(math.degrees(PT[3][0])))
-        print("theta_5 {}".format(math.degrees(PT[4][0])))
-        print("#######")
+    print("theta_1 {}".format(math.degrees(PT[0][0])))
+    print("theta_2 {}".format(math.degrees(PT[1][0])))
+    print("theta_3 {}".format(math.degrees(PT[2][0])))
+    print("theta_4 {}".format(math.degrees(PT[3][0])))
+    print("theta_5 {}".format(math.degrees(PT[4][0])))
 
 
 if __name__ == '__main__':

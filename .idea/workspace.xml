@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61f2109e-4802-46f1-b7b2-2a53e6e23eed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/simulation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/simulation/simulation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jacobian/jecobian_ik.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jacobian/link.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jacobian/robot_arm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jacobian/robot_arm_3dof.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jacobian/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/_jacobian.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fk.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ik_3dof.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ik_3dof.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/jacobian/jacobian.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jacobian/jacobian.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,11 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/fk.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="897">
-              <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
-              <folding>
-                <element signature="e#30#48#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="739">
+              <caret line="101" column="7" selection-start-line="101" selection-start-column="7" selection-end-line="101" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -39,11 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/jacobian/jacobian.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="192" lean-forward="true" selection-start-line="192" selection-end-line="192" />
-              <folding>
-                <element signature="e#1293#2546#0" />
-              </folding>
+            <state relative-caret-position="345">
+              <caret line="216" column="44" lean-forward="true" selection-start-line="216" selection-start-column="44" selection-end-line="216" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -51,12 +34,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="116" column="19" lean-forward="true" selection-start-line="116" selection-start-column="19" selection-end-line="116" selection-end-column="19" />
+            <state relative-caret-position="302">
+              <caret line="61" column="28" lean-forward="true" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
               <folding>
                 <element signature="e#38#49#0" expanded="true" />
                 <element signature="e#515#1275#0" />
-                <element signature="e#1480#3381#0" />
               </folding>
             </state>
           </provider>
@@ -65,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+            <state relative-caret-position="348">
+              <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
               <folding>
                 <element signature="e#29#66#0" expanded="true" />
               </folding>
@@ -404,10 +386,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="48" y="-11" width="1873" height="1092" extended-state="6" />
-    <editor active="true" />
+    <frame x="49" y="-4" width="1871" height="1084" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09972603" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0995671" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -533,16 +514,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ik_3dof.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="e#32#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/miscellaneous.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
@@ -584,10 +555,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="61" column="28" lean-forward="true" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
+          <folding>
+            <element signature="e#38#49#0" expanded="true" />
+            <element signature="e#515#1275#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ik_3dof.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="e#32#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/IK_3dof.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+        <state relative-caret-position="348">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
           <folding>
             <element signature="e#29#66#0" expanded="true" />
           </folding>
@@ -596,33 +591,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/fk.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="897">
-          <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
-          <folding>
-            <element signature="e#30#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="116" column="19" lean-forward="true" selection-start-line="116" selection-start-column="19" selection-end-line="116" selection-end-column="19" />
-          <folding>
-            <element signature="e#38#49#0" expanded="true" />
-            <element signature="e#515#1275#0" />
-            <element signature="e#1480#3381#0" />
-          </folding>
+        <state relative-caret-position="739">
+          <caret line="101" column="7" selection-start-line="101" selection-start-column="7" selection-end-line="101" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/jacobian/jacobian.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="192" lean-forward="true" selection-start-line="192" selection-end-line="192" />
-          <folding>
-            <element signature="e#1293#2546#0" />
-          </folding>
+        <state relative-caret-position="345">
+          <caret line="216" column="44" lean-forward="true" selection-start-line="216" selection-start-column="44" selection-end-line="216" selection-end-column="44" />
         </state>
       </provider>
     </entry>
