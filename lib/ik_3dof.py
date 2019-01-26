@@ -4,22 +4,18 @@
 
 import math
 import numpy as np
-import miscellaneous as misc
+# import miscellaneous as misc
 
-def ik_3dof(X, Y, Z=0.0):
+def ik_3dof(X = 0, Y=0, Z=0):
     # Desired X Y position of the end effector in cm
     # X = 5.0
     # Y = 5.0
     # Z = 0.0
-    # length of each joint
-    # joint_len_1 = 20.0
-    # joint_len_2 = 50.0
-    # joint_len_3 = 40.0
 
     # length of each joint
-    joint_len_1 = 33 # mm 3.3cm
-    joint_len_2 = 105 # mm 10.5cm
-    joint_len_3 = 98 # mm 9.8cm
+    joint_len_1 = 33. # mm 3.3cm
+    joint_len_2 = 105. # mm 10.5cm
+    joint_len_3 = 98. # mm 9.8cm
 
     # theta_1 = np.arctan(Y, X) # eq1
     theta_1 = math.atan(Y / X)  # eq1
@@ -35,9 +31,7 @@ def ik_3dof(X, Y, Z=0.0):
     phi_3 = np.arccos(((r3 ** 2) - (joint_len_2 ** 2) - (joint_len_3 ** 2)) / (-2.0 * joint_len_2 * joint_len_3)) # eq8
     theta_3 = np.pi - phi_3  # eq9
 
-    print(theta_1, theta_2, theta_3)
-    print(misc.rad_to_deg(theta_1), misc.rad_to_deg(theta_2), misc.rad_to_deg(theta_3))
-    return misc.rad_to_deg(theta_1), misc.rad_to_deg(theta_2), misc.rad_to_deg(theta_3)
+    return theta_1, theta_2, theta_3
 
 
 if __name__ == "__main__":

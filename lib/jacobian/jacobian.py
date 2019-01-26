@@ -17,7 +17,6 @@ import time
 import constants as const
 from lib import fk
 
-
 def get_jacobian(fkine_obj, PT):
     Hn = fkine_obj.fk()
     # print(Hn)
@@ -153,7 +152,7 @@ def jacob_test():
 # ------------------------------------------------------------------------------
 # """ FUNCTION: MAIN """
 # ------------------------------------------------------------------------------
-def main():
+def main(x_dst=1., y_dst =1., z_dst=1.):
 
         # 1 while angle is in between 0 and 180
         # 2 calculate Jacobian
@@ -162,11 +161,11 @@ def main():
         # 5 calculate increment
         # 6 use the increment to set an angle of servo after converting it into degrees
 
-    THETA_1 = 0.1
-    THETA_2 = 90.
-    THETA_3 = 0.1
-    THETA_4 = 0.1
-    THETA_5 = 0.1
+    THETA_1 = 0.
+    THETA_2 = 0.
+    THETA_3 = 0.
+    THETA_4 = 0.
+    THETA_5 = 0.
 
     L_1 = 33.  # mm 3.3cm
     L_2 = 105.  # mm 10.5cm
@@ -182,9 +181,9 @@ def main():
         [math.radians(THETA_5), 0, 0, L_4 + L_5]
     ]
 
-    x_dst = 1.
-    y_dst = 1.
-    z_dst = 1.
+    # x_dst = 1.
+    # y_dst = 10.
+    # z_dst = 1.
     i = 0
     while 180. >= math.degrees(PT[0][0]) >= 0. \
             and 180. >= math.degrees(PT[1][0]) >= 0. \
@@ -198,14 +197,14 @@ def main():
         jacobian_inv = np.linalg.pinv(jacobian)
         # print(jacobian_inv)
         # print()
-        for row in range(np.shape(jacobian_inv)[1]):
-            for column in range(np.shape(jacobian_inv)[0]):
-                if jacobian_inv[column][row] < 0.00009:
-                    jacobian_inv[column][row] = 1.
+        # for row in range(np.shape(jacobian_inv)[1]):
+        #     for column in range(np.shape(jacobian_inv)[0]):
+        #         if jacobian_inv[column][row] < 0.00009:
+        #             jacobian_inv[column][row] = 0.1
                 # print(jacobian_inv[column][row])
                 # print()
 
-        current_cord = fk_5d.fk()[:, 3][:-1]
+        # current_cord = fk_5d.fk()[:, 3][:-1]
 
         theta_dots = jacobian_inv.dot([
             [x_dst],
@@ -228,6 +227,6 @@ def main():
     print("theta_4 {}".format(math.degrees(PT[3][0])))
     print("theta_5 {}".format(math.degrees(PT[4][0])))
 
-
+    return PT[0][0], PT[1][0], PT[2][0], PT[3][0], PT[4][0]
 if __name__ == '__main__':
     main()
