@@ -68,41 +68,63 @@ def main():
     :return:
     """
 
-    theta_1, theta_2, theta_3 = ik.ik_3dof(90, 90, 90)
+    theta_1, theta_2, theta_3 = ik.ik_3dof(126, 106, 216.)
     print(math.degrees(theta_1), math.degrees(theta_2), math.degrees(theta_3))
     fk_3dof = fk.Fkine(cont.PT_3dof)
     # removing last row and last column to get only rotation matrix
     R0_3 = fk_3dof.fk()[:, :-1][:-1]
     # print(R0_3)
     R0_5 = [
-                [-1.0, 0.0, 0.0],
-                [0.0, -1.0, 0.0],
-                [0.0, 0.0, 1.0]
+                [-1., 0., 0.],
+                [0., -1., 0.],
+                [0., 0., 1.]
             ]
+    # R0_5 = [
+    #             [0., 0., 1.],
+    #             [0., -1., 0.],
+    #             [1., 0., 0.]
+    #         ]
     invR0_3 = np.linalg.inv(R0_3)
 
     R3_5 = invR0_3.dot(R0_5)
     print(R3_5)
-    theta_5 = np.arcsin(R3_5[2, 0])
+    theta_5 = np.arccos(R3_5[2, 1])
 
     # theta_4 = np.arcsin(R3_5[1][0]/-np.sin(theta_5))
 
     theta_4 = np.arcsin(R3_5[1, 2])  # [row][column]
     print(math.degrees(theta_4), math.degrees(theta_5))
 
-    R3_6_check = [
+    R3_6_check = np.matrix([
                     [-np.sin(theta_4) * np.cos(theta_5), np.sin(theta_4) * np.sin(theta_5),     np.cos(theta_4)],
                     [ np.cos(theta_4) * np.cos(theta_5), np.cos(theta_4) * (-np.sin(theta_5)),  np.sin(theta_4)],
                     [          np.sin(theta_5),                  np.cos(theta_5),                 0       ]
-                  ]
+                  ])
     print()
     print(np.matrix(R3_6_check))
+
     # print(math.degrees(theta_4))
     # print(math.degrees(theta_5))
 
     print("##### output ####")
-    fk.test_fkine(theta_1, theta_2, theta_3, theta_4, theta_5)
 
+    L_1 = 33.  # mm 3.3cm
+    L_2 = 105.  # mm 10.5cm
+    L_3 = 98.  # mm 9.8cm
+    L_4 = 27.  # mm 2.7cm
+    L_5 = 65.  # mm 6.5cm
+
+    PT_5dof = [
+        [theta_1, math.radians(90.0), 0, L_1],
+        [theta_2, 0, L_2, 0],
+        [theta_3, 0, L_3, 0],
+        [theta_4 + math.radians(90.0), math.radians(90.0), 0, 0],
+        [theta_5, 0, 0, L_4 + L_5]
+    ]
+    # fk.test_fkine(theta_1, theta_2, theta_3, theta_4, theta_5)
+    fk_5dof = fk.Fkine(PT_5dof)
+    # removing last row and last column to get only rotation matrix
+    print(fk_5dof.fk())
 if __name__ == '__main__':
     tstart = time.time()
     # servo_calibration()
