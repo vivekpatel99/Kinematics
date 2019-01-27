@@ -11,11 +11,9 @@
 """
 import numpy as np
 import math
-import sys
-import time
 
-import constants as const
-from lib import fk
+from lib.kinematics import fkine
+
 
 def get_jacobian(fkine_obj, PT):
     Hn = fkine_obj.fk()
@@ -191,7 +189,7 @@ def main(x_dst=1., y_dst =1., z_dst=1.):
             and 180. >= math.degrees(PT[3][0]) >= 0. \
             and 180. >= math.degrees(PT[4][0]) >= 0.:
 
-        fk_5d = fk.Fkine(PT)
+        fk_5d = fkine.Fkine(PT)
         jacobian = get_jacobian(fk_5d, PT)
 
         jacobian_inv = np.linalg.pinv(jacobian)
