@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61f2109e-4802-46f1-b7b2-2a53e6e23eed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/kinematics/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/kinematics/ikine.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test_fkine.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test_ikine.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/servo_calibration/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fk.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/gpio.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/gpio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ik_3dof.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jacobian/jacobian.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jacobian/jacobian.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/miscellaneous.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/miscellaneous.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pwm.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pwm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/servo_calib_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/servo_calibration/servo_calib_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/servo_calibration.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/servo_calibration/servo_calibration.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,36 +21,43 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/kinematics/fkine.py">
+        <entry file="file://$PROJECT_DIR$/lib/servo_calibration/servo_calibration.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="136" column="36" selection-start-line="136" selection-start-column="36" selection-end-line="136" selection-end-column="36" />
+            <state relative-caret-position="216">
+              <caret line="18" selection-start-line="18" selection-end-line="23" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/servo_calibration/servo_calib_data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="804">
+              <caret line="41" column="26" lean-forward="true" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
               <folding>
-                <element signature="e#30#48#0" expanded="true" />
+                <element signature="e#30#64#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test_ikine.py">
+        <entry file="file://$PROJECT_DIR$/constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="644">
-              <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+            <state relative-caret-position="138">
+              <caret line="10" column="41" selection-start-line="10" selection-end-line="10" selection-end-column="41" />
+              <folding>
+                <element signature="e#29#66#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test_fkine.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="57" column="15" selection-start-line="57" selection-start-column="15" selection-end-line="57" selection-end-column="15" />
+            <state relative-caret-position="459">
+              <caret line="29" column="51" lean-forward="true" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
               <folding>
                 <element signature="e#38#49#0" expanded="true" />
               </folding>
@@ -61,26 +65,35 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/kinematics/ikine.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/pwm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-705">
-              <caret line="81" column="43" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
+            <state relative-caret-position="93">
+              <caret line="42" column="32" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="32" />
               <folding>
-                <element signature="e#29#47#0" expanded="true" />
+                <element signature="e#348#359#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/jacobian/jacobian.py">
+        <entry file="file://$PROJECT_DIR$/lib/gpio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="197" selection-start-line="197" selection-end-line="202" selection-end-column="25" />
+            <state relative-caret-position="184">
+              <caret line="19" column="32" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="32" />
               <folding>
-                <element signature="e#303#321#0" expanded="true" />
+                <element signature="e#29#38#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/miscellaneous.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="482">
+              <caret line="37" selection-start-line="37" selection-end-line="37" />
             </state>
           </provider>
         </entry>
@@ -116,6 +129,8 @@
       <find>angle_1</find>
       <find>angle_2</find>
       <find>radians</find>
+      <find>servo_num</find>
+      <find>pin_path</find>
     </findStrings>
     <replaceStrings>
       <replace>np</replace>
@@ -139,6 +154,8 @@
       <replace>theta_1</replace>
       <replace>theta_2</replace>
       <replace>degrees</replace>
+      <replace>self.servo_cal_info</replace>
+      <replace>gpio_path</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -155,33 +172,35 @@
         <option value="$PROJECT_DIR$/lib/IK_3dof.py" />
         <option value="$PROJECT_DIR$/lib/servo_calib_data.py" />
         <option value="$PROJECT_DIR$/lib/servo_calibration.py" />
-        <option value="$PROJECT_DIR$/lib/pwm.py" />
         <option value="$PROJECT_DIR$/lib/jacobian.py" />
         <option value="$PROJECT_DIR$/lib/fk .py" />
         <option value="$PROJECT_DIR$/lib/__init__.py" />
         <option value="$PROJECT_DIR$/lib/simulation/simulation.py" />
-        <option value="$PROJECT_DIR$/constants.py" />
         <option value="$PROJECT_DIR$/../../robo_toolbx_python/robotics-toolbox-python/test.py" />
         <option value="$USER_HOME$/.virtualenvs/cv/lib/python3.5/site-packages/robopy/base/model.py" />
         <option value="$USER_HOME$/.virtualenvs/cv/lib/python3.5/site-packages/robopy/base/serial_link.py" />
         <option value="$PROJECT_DIR$/lib/jacobian/jacobian.py" />
         <option value="$PROJECT_DIR$/test/test_5dof.py" />
-        <option value="$PROJECT_DIR$/lib/gpio.py" />
-        <option value="$PROJECT_DIR$/lib/miscellaneous.py" />
         <option value="$PROJECT_DIR$/lib/ik_3dof.py" />
         <option value="$PROJECT_DIR$/lib/fk.py" />
         <option value="$PROJECT_DIR$/lib/ikine/ikine.py" />
         <option value="$PROJECT_DIR$/test/test_fkine.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/lib/kinematics/ikine.py" />
+        <option value="$PROJECT_DIR$/constants.py" />
+        <option value="$PROJECT_DIR$/lib/servo_calibration/servo_calibration.py" />
+        <option value="$PROJECT_DIR$/lib/servo_calibration/servo_calib_data.py" />
+        <option value="$PROJECT_DIR$/lib/miscellaneous.py" />
+        <option value="$PROJECT_DIR$/lib/gpio.py" />
+        <option value="$PROJECT_DIR$/lib/pwm.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="48" />
-    <option name="y" value="-11" />
-    <option name="width" value="1873" />
-    <option name="height" value="1092" />
+    <option name="x" value="59" />
+    <option name="y" value="6" />
+    <option name="width" value="1871" />
+    <option name="height" value="1084" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -189,7 +208,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -206,23 +224,13 @@
               <item name="Kinematics" type="b2602c69:ProjectViewProjectNode" />
               <item name="Kinematics" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="jacobian" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Kinematics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Kinematics" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="kinematics" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Kinematics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Kinematics" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="servo_calibration" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -231,6 +239,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/servo_calibration" />
       <recent name="$PROJECT_DIR$/lib/kinematics" />
       <recent name="$PROJECT_DIR$/lib/fkine" />
       <recent name="$PROJECT_DIR$/lib/ikine" />
@@ -456,8 +465,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="48" y="-11" width="1873" height="1092" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10520548" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19835617" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -473,7 +483,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Run" order="3" visible="true" weight="0.44547945" />
+      <window_info anchor="right" id="Run" order="3" visible="true" weight="0.32438356" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10227273" />
@@ -506,38 +516,9 @@
     <entry file="file://$PROJECT_DIR$/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/servo_calibration.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/servo_calib_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pwm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-666" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../robo_toolbx_python/robotics-toolbox-python/robot/drivebot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="33" selection-start-column="33" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../robo_toolbx_python/robotics-toolbox-python/robot/utility.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../robo_toolbx_python/robotics-toolbox-python/robot/Quaternion.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../robo_toolbx_python/robotics-toolbox-python/robot/drivebot.py" />
+    <entry file="file://$PROJECT_DIR$/../../robo_toolbx_python/robotics-toolbox-python/robot/utility.py" />
+    <entry file="file://$PROJECT_DIR$/../../robo_toolbx_python/robotics-toolbox-python/robot/Quaternion.py" />
     <entry file="file://$USER_HOME$/.virtualenvs/cv/lib/python3.5/site-packages/numpy/core/numeric.py" />
     <entry file="file://$USER_HOME$/.virtualenvs/cv/lib/python3.5/site-packages/numpy/__init__.py" />
     <entry file="file://$PROJECT_DIR$/lib/_jacobian.py" />
@@ -561,16 +542,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../robo_toolbx_python/robotics-toolbox-python/robot/trplot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-          <folding>
-            <element signature="e#33#78#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../robo_toolbx_python/robotics-toolbox-python/robot/trplot.py" />
     <entry file="file://$USER_HOME$/.virtualenvs/cv/lib/python3.5/site-packages/robopy/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -584,13 +556,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../robo_toolbx_python/robotics-toolbox-python/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="22" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../robo_toolbx_python/robotics-toolbox-python/test.py" />
     <entry file="file://$USER_HOME$/.virtualenvs/cv/lib/python3.5/site-packages/robopy/base/serial_link.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-375">
@@ -598,41 +564,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/miscellaneous.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#58#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/gpio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#29#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="e#29#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md" />
-    <entry file="file://$PROJECT_DIR$/lib/kinematics/ik_3dof.py">
+    <entry file="file://$PROJECT_DIR$/lib/kinematics/ik_3dof.py" />
+    <entry file="file://$PROJECT_DIR$/lib/kinematics/fkine.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-243">
-          <caret line="14" column="9" lean-forward="true" selection-end-line="57" />
+        <state relative-caret-position="3105">
+          <caret line="136" column="36" selection-start-line="136" selection-start-column="36" selection-end-line="136" selection-end-column="36" />
+          <folding>
+            <element signature="e#30#48#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -646,12 +586,12 @@
     <entry file="file://$PROJECT_DIR$/test/test_fkine.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/kinematics/fkine.py">
+    <entry file="file://$PROJECT_DIR$/lib/kinematics/ikine.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="136" column="36" selection-start-line="136" selection-start-column="36" selection-end-line="136" selection-end-column="36" />
+        <state relative-caret-position="23">
+          <caret line="81" column="43" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
           <folding>
-            <element signature="e#30#48#0" expanded="true" />
+            <element signature="e#29#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -666,22 +606,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/lib/servo_calibration/servo_calibration.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="57" column="15" selection-start-line="57" selection-start-column="15" selection-end-line="57" selection-end-column="15" />
+        <state relative-caret-position="216">
+          <caret line="18" selection-start-line="18" selection-end-line="23" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="10" column="41" selection-start-line="10" selection-end-line="10" selection-end-column="41" />
           <folding>
-            <element signature="e#38#49#0" expanded="true" />
+            <element signature="e#29#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/kinematics/ikine.py">
+    <entry file="file://$PROJECT_DIR$/lib/servo_calibration/servo_calib_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-705">
-          <caret line="81" column="43" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
+        <state relative-caret-position="804">
+          <caret line="41" column="26" lean-forward="true" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
           <folding>
-            <element signature="e#29#47#0" expanded="true" />
+            <element signature="e#30#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/miscellaneous.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/gpio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="32" />
+          <folding>
+            <element signature="e#29#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pwm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="42" column="32" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="32" />
+          <folding>
+            <element signature="e#348#359#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="29" column="51" lean-forward="true" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
+          <folding>
+            <element signature="e#38#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
