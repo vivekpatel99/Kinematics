@@ -2,31 +2,31 @@
 """
 
 """
-# TODO : 1. calibrate servo \
-#          2. check  pwm_generate
+import math
 import time
 import sys
+import numpy as np
 
-from lib import gpio
+# -----------------------------------------------
 from lib import pwm
-import constants as cont
+import constants as const
 from lib import servo_calib_data as servo_calib
 from lib import miscellaneous as misc
-from lib import IK_3dof as ik
+from lib.kinematics import ikine as ik
 
 
 # ------------------------------------------------------------------------------
-# """ FUNCTION: MAIN """
+# """ FUNCTION: To control Servos with IK algorithm """
 # ------------------------------------------------------------------------------
-def main():
+def robo_main():
     """
     906
     :return:
     """
 
-    pwm_jf7 = pwm.PWM(cont.JF7_MIO0_906, "906")
-    pwm_jf8 = pwm.PWM(cont.JF8_MIO09_915, "915")
-    pwm_jf9 = pwm.PWM(cont.JF9_MIO14_920, "920")
+    pwm_jf7 = pwm.PWM(const.JF7_MIO0_906, "906")
+    pwm_jf8 = pwm.PWM(const.JF8_MIO09_915, "915")
+    pwm_jf9 = pwm.PWM(const.JF9_MIO14_920, "920")
 
     while True:
         X = float(input("X: "))
@@ -47,7 +47,31 @@ def main():
         sys.exit(-1)
 
 
+# ------------------------------------------------------------------------------
+# """ FUNCTION: MAIN """
+# ------------------------------------------------------------------------------
+def main():
+    """
+
+    """
+    end_eff_direction_mat = np.matrix([
+        [-1., 0., 0.],
+        [0., -1., 0.],
+        [0., 0., 1.]
+    ])
+
+    thetas = ik.ik_5dof(end_eff_direction_mat, 5, 5, 5)
+
+    print("theta_1 {}".format(math.degrees(thetas.theta_1)))
+    print("theta_2 {}".format(math.degrees(thetas.theta_2)))
+    print("theta_3 {}".format(math.degrees(thetas.theta_3)))
+    print("theta_4 {}".format(math.degrees(thetas.theta_4)))
+    print("theta_5 {}".format(math.degrees(thetas.theta_5)))
+
 
 if __name__ == '__main__':
-    # servo_calibration()
+    tstart = time.time()
+
     main()
+
+    print("Total time {}".format(time.time() - tstart))

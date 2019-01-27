@@ -28,7 +28,6 @@ class GPIO:
         #     sys.exit(-1)
         self.gpio_path = gpio_path
 
-
         # need to unexport otherwise it will through error "resources are busy"
         if os.path.exists(self.unexport_path):
             misc.write_into_file(self.unexport_path, WRITE, self.pin_num)
