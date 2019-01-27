@@ -21,15 +21,15 @@ calculation
 servo_1 = Servo((0., 0.),
                 (180., 9.5)) # 9.5
 
-servo_2 = Servo((0., 0.5),     # 0.0.
-                 (180., 4.))  # 4 (5dof safety limit)  # 9.2 (3dof safety limit) # 9.5 (limit)
+servo_2 = Servo((0., 1.),     # 0.0.
+                 (180., 5.))  # 4 (5dof safety limit)  # 9.2 (3dof safety limit) # 9.5 (limit)
 
 servo_3 = Servo((0., 0.),
-                (180., 4.)    # 4 (5dof safety limit ) # 7. (3dof safety limit)  # 9.4 (limit)
+                (180., 6.)    # 4 (5dof safety limit ) # 7. (3dof safety limit)  # 9.4 (limit)
                 )
 
 servo_4 = Servo((0., 0.),
-                (180., 4.))  # 4 (5dof safety limit ) # 9. (3dof safety limit)  # 10  (limit)
+                (180., 6.))  # 4 (5dof safety limit ) # 9. (3dof safety limit)  # 10  (limit)
 
 
 servo_5 = Servo((0., 0.),

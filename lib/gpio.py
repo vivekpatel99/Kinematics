@@ -23,11 +23,11 @@ class GPIO:
         self.unexport_path = "/sys/class/gpio/unexport"
 
         self.gpio_path = gpio_path
-        self.pin_num = gpio_path[-3:] # taking name pin number from the path
+        self.pin_num = gpio_path[-3:]  # taking name pin number from the path
 
-        if not os.path.exists(gpio_path):
-            print("[ERROR] gpio path does not exit {}".format(gpio_path))
-            sys.exit(-1)
+        # if not os.path.exists(gpio_path):
+        #     print("[ERROR] gpio path does not exit {}".format(gpio_path))
+        #     sys.exit(-1)
 
         # need to unexport otherwise it will through error "resources are busy"
         if os.path.exists(self.unexport_path):
