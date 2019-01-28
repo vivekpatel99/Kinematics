@@ -84,7 +84,7 @@ def main():
         print("theta_4 {}".format(math.degrees(thetas.theta_4)))
         print("theta_5 {}".format(math.degrees(thetas.theta_5)))
 
-        pwm_jf1.pwm_generaworkonte(thetas.theta_1)
+        pwm_jf1.pwm_generate(thetas.theta_1)
         time.sleep(0.5)
 
         pwm_jf4.pwm_generate(thetas.theta_2)

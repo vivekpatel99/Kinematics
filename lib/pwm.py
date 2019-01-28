@@ -42,9 +42,11 @@ servo_max = 600  # max pulse range
 class PWM:
     def __init__(self, gpio_path, servo_cal_info=None, freq_hz=50):
         self.gpio_path = gpio_path
-        self.pin_num = gpio_path[-3:] # taking  pin number from the path
+        self.pin_num = gpio_path[-3:]  # taking  pin number from the path
         self.freq_hz = float(freq_hz)
         self.servo_cal_info = servo_cal_info
+        self.max_angle = 180
+        self.min_angle = 0
 
         # initialize gpio pin
         self.gpio_path = gpio.GPIO(self.gpio_path)
@@ -67,23 +69,25 @@ class PWM:
         (180,10)
         - fit the line of these two points, to get duty cycle for an angle
         - the slop of two point is
-         m = (y2-y1)/(x2-x1)
+         slop (m) = (y2-y1)/(x2-x1)
          y-y1 = m(x-x1)
          where y = duty cycle
                x = angle
         """
-        if angle >= 180:
-            angle = 180
+        if angle >= self.max_angle:
+            angle = self.max_angle
 
-        if angle <= 0:
-            angle = 0
+        if angle <= self.min_angle:
+            angle = self.min_angle
 
         print(self.servo_cal_info)
-        slop = (self.servo_cal_info.end_pnt[1] - self.servo_cal_info.start_pnt[1]) / (
-                    self.servo_cal_info.end_pnt[0] - self.servo_cal_info.start_pnt[0])
-
-        duty_cycle = (slop * (angle - self.servo_cal_info.start_pnt[0])) + self.servo_cal_info.start_pnt[1]
-
+        # slop = (self.servo_cal_info.end_pnt[1] - self.servo_cal_info.start_pnt[1]) / (
+        #             self.servo_cal_info.end_pnt[0] - self.servo_cal_info.start_pnt[0])
+        slop = (self.servo_cal_info.max_range[1] - self.servo_cal_info.min_range[1]) / (
+                self.max_angle - self.min_angle)
+        # duty_cycle = (slop * (angle - self.servo_cal_info.start_pnt[0])) + self.servo_cal_info.start_pnt[1]
+        duty_cycle = (slop * (angle - self.servo_cal_info.min_range[0])) + self.servo_cal_info.min_range[1]
+        print(duty_cycle)
         return duty_cycle
 
     # ------------------------------------------------------------------------------
