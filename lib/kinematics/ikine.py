@@ -141,8 +141,8 @@ def ik_5dof(end_eff_direction_mat, *axis):
 
     R3_5 = invR0_3.dot(end_eff_direction_mat)
 
-    theta_5 = np.arccos(R3_5[2, 1])
     theta_4 = np.arcsin(R3_5[1, 2])  # [row][column]
+    theta_5 = np.arccos(R3_5[2, 1])
 
     Thetas = collections.namedtuple('thetas', ['theta_1',
                                                'theta_2',

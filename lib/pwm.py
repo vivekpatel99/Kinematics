@@ -42,7 +42,7 @@ servo_max = 600  # max pulse range
 class PWM:
     def __init__(self, gpio_path, servo_cal_info=None, freq_hz=50):
         self.gpio_path = gpio_path
-        self.pin_num = gpio_path[-3:] # taking name pin number from the path
+        self.pin_num = gpio_path[-3:] # taking  pin number from the path
         self.freq_hz = float(freq_hz)
         self.servo_cal_info = servo_cal_info
 
@@ -78,6 +78,7 @@ class PWM:
         if angle <= 0:
             angle = 0
 
+        print(self.servo_cal_info)
         slop = (self.servo_cal_info.end_pnt[1] - self.servo_cal_info.start_pnt[1]) / (
                     self.servo_cal_info.end_pnt[0] - self.servo_cal_info.start_pnt[0])
 
@@ -94,6 +95,7 @@ class PWM:
         toff = ts - ton
         :return:
         """
+
         total_time = float(1 / self.freq_hz)
         ton = float(total_time * (self.angle_to_dcycle(angle) / 100))
         toff = total_time - ton
