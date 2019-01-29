@@ -103,7 +103,7 @@ def main():
 if __name__ == '__main__':
     tstart = time.time()
 
-    robo_main()
-    # main()
+    # robo_main()
+    main()
 
     print("Total time {}".format(time.time() - tstart))

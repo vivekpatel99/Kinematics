@@ -62,7 +62,7 @@ class PWM:
     # ------------------------------------------------------------------------------
     # """ FUNCTION: angle to duty cycle conversion """
     # ------------------------------------------------------------------------------
-    def angle_to_dcycle(self, angle):
+    def angle_to_dcycle(self, angle, unit = 'rad'):
         """
         calculation
         (0,0)
@@ -74,6 +74,13 @@ class PWM:
          where y = duty cycle
                x = angle
         """
+        if unit != 'deg' and unit != 'rad':
+            print("[ERROR] Please enter proper unit 'deg' or 'rad' ")
+            sys.exit(-1)
+
+        if unit == 'rad':
+            angle = math.degrees(angle)
+
         if angle >= self.max_angle:
             angle = self.max_angle
 
@@ -93,15 +100,21 @@ class PWM:
     # ------------------------------------------------------------------------------
     # """ FUNCTION: to calculate pulse from given frequency """
     # ------------------------------------------------------------------------------
-    def pwm_generate(self, angle):
+    def pwm_generate(self, angle, unit='rad'):
         """
         ton = total time (ts) * duty cycle
         toff = ts - ton
         :return:
         """
+        if unit != 'deg' and unit != 'rad':
+            print("[ERROR] Please enter proper unit 'deg' or 'rad' ")
+            sys.exit(-1)
+
+        if unit == 'rad':
+            angle = math.degrees(angle)
 
         total_time = float(1 / self.freq_hz)
-        ton = float(total_time * (self.angle_to_dcycle(angle) / 100))
+        ton = float(total_time * (self.angle_to_dcycle(angle, unit='deg') / 100))
         toff = total_time - ton
 
         # PWM.set_duty_cycle(1)
