@@ -81,12 +81,6 @@ class PWM:
         if unit == 'rad':
             angle = math.degrees(angle)
 
-        if angle >= self.max_angle:
-            angle = self.max_angle
-
-        if angle <= self.min_angle:
-            angle = self.min_angle
-
         print(self.servo_cal_info)
         # slop = (self.servo_cal_info.end_pnt[1] - self.servo_cal_info.start_pnt[1]) / (
         #             self.servo_cal_info.end_pnt[0] - self.servo_cal_info.start_pnt[0])
@@ -112,6 +106,12 @@ class PWM:
 
         if unit == 'rad':
             angle = math.degrees(angle)
+
+        if angle >= self.servo_cal_info.max_range[0]:
+            angle = self.servo_cal_info.max_range[0]
+
+        if angle <= self.servo_cal_info.min_range[0]:
+            angle = self.servo_cal_info.min_range[0]
 
         total_time = float(1 / self.freq_hz)
         ton = float(total_time * (self.angle_to_dcycle(angle, unit='deg') / 100))
