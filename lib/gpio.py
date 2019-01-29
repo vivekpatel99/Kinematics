@@ -17,16 +17,17 @@ WRITE = "w" # use to set gpio out
 # """ CLASS: for GPIO set up """
 # ------------------------------------------------------------------------------
 class GPIO:
-    def __init__(self, gpio_path, pin_num):
+    def __init__(self, gpio_path):
 
         self.export_path = "/sys/class/gpio/export"
         self.unexport_path = "/sys/class/gpio/unexport"
-        self.pin_num = pin_num
+
+        self.gpio_path = gpio_path
+        self.pin_num = gpio_path[-3:]  # taking name pin number from the path
 
         # if not os.path.exists(gpio_path):
         #     print("[ERROR] gpio path does not exit {}".format(gpio_path))
         #     sys.exit(-1)
-        self.gpio_path = gpio_path
 
         # need to unexport otherwise it will through error "resources are busy"
         if os.path.exists(self.unexport_path):

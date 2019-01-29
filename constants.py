@@ -4,7 +4,7 @@ import math
 
 
 # -----------------------------------------------
-""" paths of all gpios """
+""" paths of all GPIOs """
 # from zybo_zybo_rm-pdf (page 25)
 
 
@@ -24,11 +24,11 @@ LD04_MIO07_913 = "/sys/class/gpio/gpio913" # LED
 """ DH parameters for robotic arm """
 
 
-THETA_1 = 45
-THETA_2 = -20
-THETA_3 = 93
-THETA_4 = 0
-THETA_5 = 0
+THETA_1 = 0.
+THETA_2 = 0.
+THETA_3 = 0.
+THETA_4 = 0.
+THETA_5 = 0.
 
 L_1 = 33.  # mm 3.3cm
 L_2 = 105.  # mm 10.5cm
